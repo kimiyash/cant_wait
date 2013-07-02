@@ -92,4 +92,4 @@ Contributing:
 **cant_wait** is released under the [MIT License](http://opensource.org/licenses/MIT).
 
 
-June 2013
+July 2013

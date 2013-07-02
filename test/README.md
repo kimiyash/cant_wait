@@ -13,13 +13,13 @@
 
 ### The problem
 
-The approach of using minimal Rails components (ActiveRecord, Railties) is problematic due to the amount of code that Rails loads and of how it changes in the default Ruby behavior.  I opted here to test the same way an end user would use the gem.
+The approach of using minimal Rails components (ActiveRecord, Railties) is problematic due to the amount of code that Rails loads and of how it changes the default Ruby behavior.  I opted here to test replicating the way an end user would use the gem.
 
-To test in different Rails versions requires running several Rails Apps either simultaneously or sequentially.  Even if it is done in different threads, being a Rails App a singleton, it will result in:
+To test in different Rails versions requires running several Rails Apps either simultaneously or sequentially.  Even if it is done in different threads, being a Rails Application a singleton, it will result in:
 
     RuntimeError: You cannot have more than one Rails::Application
 
-This path also would make the test cases too distant to the real conditions you may encounter in isolated Rails applications, and even if the singleton restriction is removed, it will still apply to old versions of Rails.
+This path also would make the test cases too distant to the real conditions you may encounter in isolated Rails applications, and even if the singleton restriction is removed (see this interesting discussion regarding Rails 4.1: <https://github.com/rails/rails/pull/9655>), it will still apply to old versions of Rails.
 
 ### A solution
 
@@ -48,7 +48,7 @@ Then I modified their Gemfile by adding gems for PostgreSQL, Minitest and Growl:
 
 The rails apps require bundle install, specially when changing the version of Ruby to be used. To make it easier, I added a rake task (<tt>rake test:bundle</tt>).
 
-The test is run through the <tt>rake test:run command</tt>.  The test goes over each rails app in sequence and:
+The test is run through the <tt>rake test:run</tt> command.  The test goes over each rails app in sequence and:
 
 1. It sets Bundle to use the test app's Gemfile
 2. It creates the app's <tt>config/database.yml</tt> with a random timeout
@@ -58,7 +58,7 @@ The test is run through the <tt>rake test:run command</tt>.  The test goes over 
 
 Due to the complex setup needed, I choose not to use the rake default to run the test, just to signal the tester to stop to consider these choices.
 
-And additional <tt>rake test:all</tt> will do both the bundle install and run the tests. This is the way travis-ci is set to run.
+And additional <tt>rake test:all</tt> will do both the bundle install and run the tests. Travis-ci runs each of these tasks in sequence.
 
 
 ## The Testing process in detail
@@ -101,12 +101,15 @@ Check the .travis.yml file for details.
 
         1.9.2-p320       (MRI's last patchlevel of 1.9.2)  Linux and MacOS X
         1.9.3-p327       (MRI)                             Linux
-        1.9.3-p429       (MRI last patchlevel of 1.9.3)    MacOS X
+        1.9.3-p429       (MRI)                             Linux and MacOS X
+        1.9.3-p448       (MRI last patchlevel of 1.9.3)    Linux and Mac OS X
         2.0.0-p0         (MRI)                             Linux
-        2.0.0-p195       (MRI last patchlevel of 2.0.0)    MacOS X
-        jruby 1.7.3      (java 1.7.0_15)                   Linux
-        jruby 1.7.4      (java 1.6.0_45)                   MacOS X
-        Rubinius 2.0.0   (1.9.3, 2013-06-12 JI)            Linux
+        2.0.0-p195       (MRI)                             Linux and MacOS X
+        2.0.0-p247       (MRI last patchlevel of 2.0.0)    Linux and Mac OS X
+        jruby 1.7.3      (Java 1.7.0_15)                   Linux
+        jruby 1.7.4      (Java 1.6.0_45)                   MacOS X
+        jruby 1.7.4      (Java 1.7.0_21)                   Linux
+        Rubinius 2.0.0   (1.9.3, 2013-06-30 JI)            Linux
 
 * Versions of Rails:
 
@@ -119,4 +122,4 @@ Check the .travis.yml file for details.
 * PostgreSQL versions 8.3.6 and 9.2.4.
 
 
-June 2013
+July 2013
