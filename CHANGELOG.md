@@ -31,6 +31,7 @@ Documentation:
 
   - Changes in the documentation
   - Minimum ruby is MRI 1.9.1 or compatible
+  - Added the code signing certificate, to allow to verify the gem's signature before its installation
 
 Development:
 

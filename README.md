@@ -81,6 +81,11 @@ These files could be of particular interest:
   + [Test setup details](https://github.com/CarlosCD/cant_wait/blob/master/test/README.md)
 
 
+## Signature
+
+All the versions of **cant_wait** released from rubygems.org have been digitally signed.  To verify that the gem has not been tampered with, I am providing the certificate used, available also at [Github](https://github.com/CarlosCD/cant_wait).
+
+
 ## License
 
 **cant_wait** is released under the [MIT License](http://opensource.org/licenses/MIT).
