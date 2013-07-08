@@ -24,13 +24,14 @@ Development:
   - Travis scripts stability fixes
   - Tests for Rails 4.0.0
 
-0.0.4.alpha (July 2, 2013)
+0.0.4.alpha (July 8, 2013)
 ==========================
 
 Documentation:
 
-  - Some minor changes in the documentation
+  - Changes in the documentation
+  - Minimum ruby is MRI 1.9.1 or compatible
 
 Development:
 
-  - Tests with new releases of MRI C Ruby 1.9.3 and 2.0.0
+  - Tested with new patches of MRI for C Ruby 1.9.3 and 2.0.0

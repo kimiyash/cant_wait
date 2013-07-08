@@ -48,7 +48,7 @@ Then I modified their Gemfile by adding gems for PostgreSQL, Minitest and Growl:
 
 The rails apps require bundle install, specially when changing the version of Ruby to be used. To make it easier, I added a rake task (<tt>rake test:bundle</tt>).
 
-The test is run through the <tt>rake test:run</tt> command.  The test goes over each rails app in sequence and:
+The test is run through the <tt>rake test:run</tt> command.  The test goes over each Rails app in sequence and:
 
 1. It sets Bundle to use the test app's Gemfile
 2. It creates the app's <tt>config/database.yml</tt> with a random timeout
@@ -88,6 +88,7 @@ After cloning the gem, you can start testing it by following these steps:
 
 If so wanted, run the tests several times.  The tests use different random timeout scenarios, so each run may be a bit different.
 
+
 ## Travis
 
 I added travis-ci.org to check every build, as well as a badge to check the status last commit.
@@ -111,6 +112,8 @@ Check the .travis.yml file for details.
         jruby 1.7.4      (Java 1.7.0_21)                   Linux
         Rubinius 2.0.0   (1.9.3, 2013-06-30 JI)            Linux
 
+  It requires at least MRI 1.9.1 or compatible.
+
 * Versions of Rails:
 
         Rails 3.0.3      First version using Bundler 1.3.5 (incompatible with Bundler 1.0.X)
@@ -120,6 +123,19 @@ Check the .travis.yml file for details.
         Rails 4.0.0      Last Release of Rails 4.0
 
 * PostgreSQL versions 8.3.6 and 9.2.4.
+
+
+## Development / Contributing
+
+If you find any problems, please feel free to open an issue at ([GitHub](https://github.com/CarlosCD/cant_wait)).
+
+Contributing:
+
+1. Fork it
+2. Create your feature branch (<tt>git checkout -b my-new-feature</tt>)
+3. Commit your changes (<tt>git commit -am "Add some feature"</tt>)
+4. Push to the branch (<tt>git push origin my-new-feature</tt>)
+5. Create new Pull Request
 
 
 July 2013
