@@ -11,7 +11,7 @@ module CantWait
     initializer 'cant_wait.set_timeout' do
       begin
         database_config = Rails.configuration.database_configuration[Rails.env]
-        if (database_config['adapter'].downcase == 'postgresql') && database_config['timeout']
+        if (database_config['adapter'].downcase =~ /^(postgresql|postgis)$/) && database_config['timeout']
           ActiveRecord::Base.connection.execute "set statement_timeout = #{database_config['timeout']}"
         end
       rescue Exception => e
